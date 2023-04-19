@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/main');
 const helmet = require("helmet");
 
+const email = require('./controllers/email');
+
 
 const app = express(); 
 app.use(bodyParser.urlencoded({ extended: false }));
