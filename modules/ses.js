@@ -5,11 +5,17 @@ const rootDir = require('../utilities/path');
 const ejs = require('ejs');
 const fs = require('fs');
 
-// Read the email template file
-const reportEmailTemplate = fs.readFileSync(path.join(rootDir, 'views', 'report.ejs'), 'utf8');
 
-// Compile the email template
-const reportCompiledTemplate = ejs.compile(reportEmailTemplate);
+const compileTemple = async(filename)=>{
+    // Read the email template file
+    const emailTemplate = await fs.readFileSync(path.join(rootDir, 'views', filename), 'utf8');
+    // Compile the email template
+    const compiledTemplate = await ejs.compile(emailTemplate);
+    return compiledTemplate;
+}
+
+
+
 
 var AccessKeyId = process.env.AWS_ACCESSID;
 var SecretAccessKey = process.env.AWS_SECRET_ACCESSKEY;
@@ -21,3 +27,33 @@ const ses = new AWS.SES({
     secretAccessKey: SecretAccessKey,
     region: Region,
 });
+
+
+async function email(email,menu) {
+    const compiledTemplate = await compileTemple('menu.ejs');
+    const html = compiledTemplate({obj: menu});
+    const params = {
+      Destination: {
+        ToAddresses: [email]
+      },
+      Message: {
+        Body: {
+          Html: {
+            Data: html
+          }
+        },
+        Subject: {
+          Data: "Indian Menu For Today"
+        }
+      },
+      Source: 'Masala Monitor <menu@masalamonitor.com>'
+    };
+    try {
+      const response= await ses.sendEmail(params).promise();
+    } catch (err) {
+      console.log(err);
+      throw new Error(`Error sending email`);
+    }
+  };
+
+  module.exports={email};

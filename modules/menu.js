@@ -8,11 +8,11 @@ const diningHallsList = ['Akers Hall', 'Brody Hall', 'Case Hall', 'Holden Hall',
 
 const diningHallsUrls = ['https://eatatstate.msu.edu/menu/The%20Edge%20at%20Akers/all/', 'https://eatatstate.msu.edu/menu/Brody%20Square/all/', 'https://eatatstate.msu.edu/menu/South%20Pointe%20at%20Case/all/', 'https://eatatstate.msu.edu/menu/Holden%20Dining%20Hall/all/', 'https://eatatstate.msu.edu/menu/Holmes%20Dining%20Hall/all/', 'https://eatatstate.msu.edu/menu/Heritage%20Commons%20at%20Landon/all/', 'https://eatatstate.msu.edu/menu/Thrive%20at%20Owen/all/', 'https://eatatstate.msu.edu/menu/The%20Vista%20at%20Shaw/all/', 'https://eatatstate.msu.edu/menu/The%20Gallery%20at%20Snyder%20Phillips/all/'];
 
-async function getMenus() {
+async function getMenus(nDays) {
   const masterDict = {};
   for (let i = 0; i < diningHallsList.length; i++) {
     const hall = diningHallsList[i];
-    const date = moment().format('YYYY-MM-DD');
+    const date = moment().add(nDays, 'day').format('YYYY-MM-DD');
     const response = await axios.get(diningHallsUrls[i] + date);
     const $ = cheerio.load(response.data);
     const menuItems = $('.menu-item');
@@ -40,8 +40,8 @@ async function getMenus() {
 
 
 
-async function findItemHallMeal(itemNames) {
-  let masterDict = await getMenus();
+async function findItemHallMeal(itemNames, nDays) {
+  let masterDict = await getMenus(nDays);
   let result = { lunch: [], dinner: []};
   for (const hall in masterDict) {
     const meals = masterDict[hall];
@@ -58,6 +58,7 @@ async function findItemHallMeal(itemNames) {
   }
   return result;
 }
+
 
 
 // (async () => {

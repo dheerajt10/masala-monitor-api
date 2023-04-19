@@ -4,6 +4,15 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-48V95MM249"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-48V95MM249');
+        </script>
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -21,7 +30,8 @@
 			name="description"
 			content="Masala Monitor - Get Alerts for Indian Food at MSU Dining halls"
 		/>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="/style.css" />
+
 		<link rel="icon" href="/favicon.ico" />
 	</head>
 
@@ -37,7 +47,9 @@
 						We will send you an email whenever Indian food is made
 						in any dining hall at MSU
 					</h2>
-					<form action="POST" class="main__form">
+
+					<form action="/" method="POST" class="main__form">
+
 						<input
 							type="text"
 							placeholder="Your email address..."
@@ -60,3 +72,4 @@
 		</main>
 	</body>
 </html>
+
