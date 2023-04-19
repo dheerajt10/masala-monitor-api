@@ -34,5 +34,13 @@ const createUser = async (user) => {
   return docRef.id;
 };
 
+const deleteUser = async (userId) =>{
+  const docRef = await db.collection("users").doc(userId);
+  const docSnapshot = await docRef.get();
+  if (docSnapshot.exists) {
+    await docRef.delete();
+  }
+}
 
-module.exports = {updateUser, getUser, createUser, getUserbyId }
+
+module.exports = {updateUser, getUser, createUser, getUserbyId, deleteUser }

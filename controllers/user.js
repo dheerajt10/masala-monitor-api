@@ -4,6 +4,7 @@ const path = require('path');
 const rootDir = require('../utilities/path');
 const ejs = require('ejs');
 const fs = require('fs');
+const sesService = require('../modules/ses');
 
 
 const getMenu = require('../modules/menu');
@@ -40,6 +41,7 @@ const postEmail = async(req,res)=>{
         const user = await firestore_user.getUser(email);
         if (!user){
             await firestore_user.createUser({ email});
+            await sesService.confirmationEmail([email]);
         }
         return res.sendFile(path.join(rootDir, 'views', 'confirmation.html'));
     }catch(err){
@@ -48,5 +50,25 @@ const postEmail = async(req,res)=>{
     }
 };
 
+const unsubscribe = async(req,res) =>{
+    const compiledTemplate = await compileTemple('unsubscribe.ejs');
+    const html = compiledTemplate();
+    res.send(html);
+}
 
-module.exports = {getEmail, getMenuForToday,postEmail};
+const postUnsubscribe = async(req,res)=>{
+    const {email} = req.body;
+    try{
+        const user = await firestore_user.getUser(email);
+        if (user){
+            const userId = user[1];
+            await firestore_user.deleteUser(userId);
+        }
+        return res.sendFile(path.join(rootDir, 'views', 'unsubscribe.html'));
+    }catch(err){
+        console.log(err);
+        res.redirect('/');
+    }
+};
+
+module.exports = {getEmail, getMenuForToday,postEmail, unsubscribe, postUnsubscribe};

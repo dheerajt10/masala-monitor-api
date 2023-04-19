@@ -34,7 +34,7 @@ async function email(email,menu) {
     const html = compiledTemplate({obj: menu});
     const params = {
       Destination: {
-        ToAddresses: [email]
+        ToAddresses: email
       },
       Message: {
         Body: {
@@ -56,4 +56,30 @@ async function email(email,menu) {
     }
   };
 
-  module.exports={email};
+  async function confirmationEmail(email) {
+    const html = fs.readFileSync(path.join(rootDir, 'views', 'confirmEmail.html'), 'utf8');
+    const params = {
+      Destination: {
+        ToAddresses: email
+      },
+      Message: {
+        Body: {
+          Html: {
+            Data: html
+          }
+        },
+        Subject: {
+          Data: "Welcome to Masala Monitor Alerts"
+        }
+      },
+      Source: 'Masala Monitor <welcome@masalamonitor.com>'
+    };
+    try {
+      const response= await ses.sendEmail(params).promise();
+    } catch (err) {
+      console.log(err);
+      throw new Error(`Error sending email`);
+    }
+  };
+
+  module.exports={email, confirmationEmail};
