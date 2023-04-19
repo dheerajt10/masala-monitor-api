@@ -42,5 +42,20 @@ const deleteUser = async (userId) =>{
   }
 }
 
+//get emails
+const getEmails = async () => {
+  const users = await db.collection("users");
+  let snapshot;
+  snapshot = await users.get();  
+  const emails = await Promise.all(
+    snapshot.docs.map(async (doc) => {
+        const userData=  await doc.data();
+        return userData.email;        
+    })
+  ).then((result) => result.filter((item) => item !== undefined)); // filter out undefined items
+  return emails;
+};
 
-module.exports = {updateUser, getUser, createUser, getUserbyId, deleteUser }
+
+
+module.exports = {updateUser, getUser, createUser, getUserbyId, deleteUser, getEmails }

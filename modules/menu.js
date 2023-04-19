@@ -32,7 +32,7 @@ async function getMenus(nDays) {
         menuDinner.push(itemDesc);
       }
     });
-    masterDict[hall] = { lunch: menuLunch, dinner: menuDinner };
+    masterDict[hall] = { Lunch: menuLunch, Dinner: menuDinner };
   }
   return masterDict;
 }
@@ -42,7 +42,7 @@ async function getMenus(nDays) {
 
 async function findItemHallMeal(itemNames, nDays) {
   let masterDict = await getMenus(nDays);
-  let result = { lunch: [], dinner: []};
+  let result = { Lunch: [], Dinner: []};
   for (const hall in masterDict) {
     const meals = masterDict[hall];
     for (const meal in meals) {

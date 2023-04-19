@@ -82,4 +82,33 @@ async function email(email,menu) {
     }
   };
 
-  module.exports={email, confirmationEmail};
+
+  async function Adminemail(email,menu) {
+    const compiledTemplate = await compileTemple('admin.ejs');
+    const html = compiledTemplate({obj: menu});
+    const params = {
+      Destination: {
+        ToAddresses: email
+      },
+      Message: {
+        Body: {
+          Html: {
+            Data: html
+          }
+        },
+        Subject: {
+          Data: "Review the Indian Menu For Tomorrow"
+        }
+      },
+      Source: 'Masala Monitor <admin@masalamonitor.com>'
+    };
+    try {
+      const response= await ses.sendEmail(params).promise();
+    } catch (err) {
+      console.log(err);
+      throw new Error(`Error sending email`);
+    }
+  };
+
+
+  module.exports={email, confirmationEmail, Adminemail};
