@@ -72,7 +72,7 @@ async function email(email,menu) {
           Data: "Welcome to Masala Monitor Alerts"
         }
       },
-      Source: 'Masala Monitor <welcome@masalamonitor.com>'
+      Source: 'Masala Monitor <menu@masalamonitor.com>'
     };
     try {
       const response= await ses.sendEmail(params).promise();
@@ -100,7 +100,7 @@ async function email(email,menu) {
           Data: "Review the Indian Menu For Tomorrow"
         }
       },
-      Source: 'Masala Monitor <admin@masalamonitor.com>'
+      Source: 'Masala Monitor <menu@masalamonitor.com>'
     };
     try {
       const response= await ses.sendEmail(params).promise();
