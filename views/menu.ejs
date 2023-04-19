@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Masala Monitor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            font-family: 'Inter', Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <% Object.keys(obj).forEach(function(key) { %>
+          <li><%= key %>: </li>
+          <ul>
+            <% if (Array.isArray(obj[key])) { %>
+              <% obj[key].forEach(function(value) { %>
+                <li><%= value %></li>
+              <% }) %>
+            <% } else { %>
+              <li><%= obj[key] %></li>
+            <% } %>
+          </ul>
+        <% }) %>
+      </ul>
+          
+</body>
+</html>
