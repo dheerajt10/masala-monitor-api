@@ -31,7 +31,9 @@ async function user(){
         const emails = await firestore_user.getEmails();
         const menu = await firestore_menu.getMenu(date);
         if (menu){
-            await sesService.email(emails, menu);
+            for (const email of emails){
+                await sesService.email([email], menu);
+            }
         }
     }catch(err){
         console.log(err);
@@ -62,7 +64,7 @@ const jobUser = schedule.scheduleJob(runTimeUser, async function() {
   });
 
 
-module.exports= {jobAdmin, jobUser};
+module.exports= {jobAdmin, jobUser, user};
 
 
 

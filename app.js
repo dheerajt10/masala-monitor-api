@@ -6,8 +6,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/main');
 const helmet = require("helmet");
 
-const { jobAdmin, jobUser } = require('./controllers/email'); 
-
+const { jobAdmin, jobUser, user } = require('./controllers/email'); 
 
 
 const app = express(); 

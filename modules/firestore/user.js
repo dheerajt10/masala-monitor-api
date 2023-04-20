@@ -50,7 +50,9 @@ const getEmails = async () => {
   const emails = await Promise.all(
     snapshot.docs.map(async (doc) => {
         const userData=  await doc.data();
-        return userData.email;        
+        if (userData.email != ""){
+          return userData.email; 
+        }   
     })
   ).then((result) => result.filter((item) => item !== undefined)); // filter out undefined items
   return emails;
