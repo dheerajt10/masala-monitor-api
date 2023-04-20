@@ -7,9 +7,9 @@ const getMenu = require('../modules/menu');
 const sesService = require('../modules/ses');
 
 // Define the time you want the function to run
-const runTimeAdmin = '0 0 21 * * *'; // Runs at 6:00am every day
+const runTimeAdmin = '0 0 23 * * *'; // Runs at 6:00am every day
 
-const runTimeUser = '0 0 7 * * *';
+const runTimeUser = '0 0 11 * * *';
 
 var adminList = JSON.parse(process.env.ADMIN_EMAIL);
 
