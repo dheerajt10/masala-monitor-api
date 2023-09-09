@@ -45,7 +45,7 @@ async function user(){
 
 
 const jobAdmin = schedule.scheduleJob(runTimeAdmin, async function() {
-  console.log('Running function at', new Date());
+  console.log('Running admin function at', new Date());
   try {
     await admin();
   } catch (error) {
@@ -55,7 +55,7 @@ const jobAdmin = schedule.scheduleJob(runTimeAdmin, async function() {
 
 
 const jobUser = schedule.scheduleJob(runTimeUser, async function() {
-    console.log('Running function at', new Date());
+    console.log('Running user function at', new Date());
     try {
       await user();
     } catch (error) {

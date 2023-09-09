@@ -62,7 +62,7 @@ async function findItemHallMeal(itemNames, nDays) {
 
 
 // (async () => {
-//   const result = await findItemHallMeal(["Naan", "Basmati Rice"]);
+//   const result = await findItemHallMeal(["Naan", "Basmati Rice"], 1);
 //   console.log(result);
 // })();
 

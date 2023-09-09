@@ -52,7 +52,7 @@ async function email(email,menu) {
       const response= await ses.sendEmail(params).promise();
     } catch (err) {
       console.log(err);
-      throw new Error(`Error sending email`);
+      console.log(`Error sending email to ${email}`);
     }
   };
 
@@ -78,7 +78,7 @@ async function email(email,menu) {
       const response= await ses.sendEmail(params).promise();
     } catch (err) {
       console.log(err);
-      throw new Error(`Error sending email`);
+      console.log(`Error sending email to ${email}`);
     }
   };
 
@@ -106,7 +106,7 @@ async function email(email,menu) {
       const response= await ses.sendEmail(params).promise();
     } catch (err) {
       console.log(err);
-      throw new Error(`Error sending email`);
+      console.log(`Error sending email to ${email}`);
     }
   };
 
