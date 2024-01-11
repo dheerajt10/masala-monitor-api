@@ -21,7 +21,7 @@ To get a local copy up and running, follow these simple steps.
   npm install npm@latest -g
 
 
-###Installation
+### Installation
 1. Clone the repo
    - git clone https://github.com/your_username_/MasalaMonitor.git
 2. Install NPM packges
@@ -32,17 +32,17 @@ To get a local copy up and running, follow these simple steps.
    - AWS_REGION=ENTER_YOUR_REGION
 
   
-##Usage
+## Usage
 Masala Monitor can be used to track the daily Indian menu offerings at MSU dining halls. It scrapes the MSU dining website, identifies dishes, and dispatches notifications with the menu details.
 
-Roadmap
+## Roadmap
  ✅ Scrape MSU dining hall menus for Indian food
  ✅ Send email notifications to subscribers
  ✅ Add a subscription management interface
  ⬜️ Include options for other cuisines
  ⬜️ Expand to other universities
 
-##Contributing
+## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 1. Fork the Project
@@ -52,11 +52,11 @@ Contributions are what make the open-source community such an amazing place to l
 5. Open a Pull Request
 
 
-##License
+## License
 Distributed under the MIT License. See LICENSE for more information.
 
 
-##Contact
+## Contact
 
 Dheeraj Thota - 10102005dt@gmail.com
 
