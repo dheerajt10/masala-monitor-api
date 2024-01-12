@@ -37,9 +37,13 @@ Masala Monitor can be used to track the daily Indian menu offerings at MSU dinin
 
 ## Roadmap
  ✅ Scrape MSU dining hall menus for Indian food
+
  ✅ Send email notifications to subscribers
+ 
  ✅ Add a subscription management interface
+ 
  ⬜️ Include options for other cuisines
+ 
  ⬜️ Expand to other universities
 
 ## Contributing
