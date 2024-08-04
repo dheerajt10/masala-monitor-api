@@ -23,7 +23,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Installation
 1. Clone the repo
-   - git clone https://github.com/your_username_/MasalaMonitor.git
+   - git clone https://github.com/dheerajt10/MasalaMonitor.git
 2. Install NPM packges
    - npm install
 3. Enter your AWS credentials in '.env'
